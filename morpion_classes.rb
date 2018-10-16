@@ -1,30 +1,36 @@
-class Board
-  attr_accessor :count_turn
-  attr_reader :case_hash
-  @@case_names = ["A1","A2","A3","B1","B2","B3","C1","C2","C3"]
+class Board #classe définissant le plateau de jeu
+
+  attr_accessor :count_turn #compteur de tour au sein d'un round (pour identifier les matchs nuls)
+  attr_reader :case_hash #hash contenant les 9 cases
+  
+  @@case_names = ["A1","A2","A3","B1","B2","B3","C1","C2","C3"] #variable de classe pour identifier les 9 cases
 
   def initialize
     @case_hash = Hash.new
+
+    #initialisation de l'ensemble des cases du board
     @@case_names.each do |case_str|
       @case_hash[case_str] = BoardCase.new(case_str)
     end
+
+    #
     @count_turn = 1
 
   end
 
-  def case_names
+  def case_names #permet de lire la variable de classe @@case_names
     return @@case_names
   end
 
 end
 
-class BoardCase
-  attr_accessor :content
-  attr_reader :position
+class BoardCase #classe définissant 1 case
+  attr_accessor :content #contenu de la case (" " ou "o" ou "x")
+  attr_reader :position #position de la case ("A1", "B2", etc.)
 
   def initialize(position)
     @position = position
-    @content = " "
+    @content = "  "
   end
 
 end

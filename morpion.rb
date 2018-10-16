@@ -5,11 +5,11 @@ def start_game
   board = Board.new
   puts "Veuillez entrer le prénom du premier joueur"
   print ">"
-  player1 = Player.new(gets.chomp, "o")
+  player1 = Player.new(gets.chomp, "🔥")
   puts
   puts "Veuillez entrer le prénom du second joueur"
   print ">"
-  player2 = Player.new(gets.chomp, "x")
+  player2 = Player.new(gets.chomp, "🌊")
   puts
   puts "*****La partie est lancée!!!*****"
   puts
@@ -35,7 +35,7 @@ def play_turn(game)
   chosen_case = game.board.case_hash[input.upcase]
   if chosen_case #test pour savoir si cette case existe (n'est pas nil)
 
-    if chosen_case.content == " " #test pour vérifier si la case est déjà occupée ou pas (" " = case libre)
+    if chosen_case.content == "  " #test pour vérifier si la case est déjà occupée ou pas (" " = case libre)
       chosen_case.content = game.current_player.symbol
     else
       puts "!! ERREUR: la case est déjà prise. Veuillez recommencer !!"
@@ -100,7 +100,7 @@ def look_for_winning_move(game, last_case_played)
     result_diag2 += board_case.content
   end
   result_array = [result_col, result_row, result_diag1, result_diag2]
-  if result_array.include?("xxx") || result_array.include?("ooo")
+  if result_array.include?("🌊🌊🌊") || result_array.include?("🔥🔥🔥")
     game.status = game.current_player
   end
 end
