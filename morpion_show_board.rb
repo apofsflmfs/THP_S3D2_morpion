@@ -1,14 +1,20 @@
-require 'colorize'
+require 'colorize' #permet les effets de couleur
 
 String.colors
 
-def show_board(game)
-  cases = game.board.case_names
+def show_board(game) #permet l'affichage de l'état du plateau
+  system "clear" or system "cls" #vide l'écran du terminal
+
+  cases = game.board.case_names#on récupère le array ["A1","A2","A3","B1",etc.]
+
+  #permet de changer les couleurs d'écriture et de fond par groupes
   global_background = :light_white
   score_background = :black
   board_background = :black
   player1_color = :yellow
   player2_color = :blue
+
+  #LA SUITE EST DE LA MISE EN PAGE BETE ET MECHANTE. ASSEZ INCOMPREHENSIBLE SI ON L'A PAS FAIT :))
   puts 
   puts (" "*60).colorize(:background => global_background)
   puts (" "*60).colorize(:background => global_background)
@@ -112,7 +118,5 @@ def show_board(game)
 
   puts (" "*60).colorize(:background => global_background)
   puts (" "*60).colorize(:background => global_background)
-
-
   puts
 end

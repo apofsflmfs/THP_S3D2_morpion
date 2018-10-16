@@ -1,15 +1,12 @@
-Exercice sur la POO - jeu de morpion
+# Exercice sur la POO - jeu de morpion
 
-Fait par Samir Founou et Clément Baldy
+__Fait par Samir Founou et Clément Baldy__
 
-Pour jouer, tapez "ruby morpion.rb"
+ __=>__ Pour jouer et lancer le programme, tapez "ruby morpion.rb" __<=__
 
-Fichiers:
-- morpion.rb => contient le programme à exécuter pour jouer
-- morpion_classes.rb => décrit l'ensemble des 4 classes utilisées pour le jeu
-- morpion_show_board.rb => permet d'afficher le plateau de jeu et le scoreboard
+3 fichiers:
+* __morpion.rb__ => contient le programme à exécuter pour jouer
+* __morpion_classes.rb__ => décrit l'ensemble des 4 classes utilisées pour le jeu
+* __morpion_show_board.rb__ => permet d'afficher le plateau de jeu et le scoreboard
 
-
-
-Notes: A optimiser
-=> Partie look for winning move (à raccourcir)
+*Bien sûr les 2 derniers fichiers sont appelés par le premier*
