@@ -1,1 +1,2 @@
-# S3D2_THP_morpion
+Exercice sur la POO - jeu de morpion
+Fait par Samir Founou et Clément Baldy
