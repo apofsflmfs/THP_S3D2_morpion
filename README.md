@@ -1,4 +1,4 @@
-# Exercice sur la POO - jeu de morpion
+# Exercice sur la POO - Jeu de morpion
 
 __Fait par Samir Founou et Clément Baldy__
 

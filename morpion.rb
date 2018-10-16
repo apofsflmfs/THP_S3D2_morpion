@@ -1,28 +1,27 @@
 require_relative 'morpion_classes'
 require_relative 'morpion_show_board'
+require 'colorize'
 
 def start_game #initialise le jeu
   board = Board.new #création d'un board vierge (9 cases vides)
-
-  puts "Veuillez entrer le prénom du premier joueur"
+  puts
+  puts "Veuillez entrer le prénom du premier joueur".colorize(:background => :black)
   print ">"
   player1 = Player.new(gets.chomp, "🔥") #création du premier joueur
   puts
 
-  puts "Veuillez entrer le prénom du second joueur"
+  puts "Veuillez entrer le prénom du second joueur".colorize(:background => :black)
   print ">"
   player2 = Player.new(gets.chomp, "🌊") #création du second joeur
-  puts
-
-  puts "*****La partie est lancée!!!*****"
-  puts
 
   return Game.new(player1, player2, board) #retour un objet "game" contenant les 2 joeurs et le board vierge
 end
 
 def play_turn(game) #permet de faire un tour de jeu
-  puts "C'est au tour de #{game.current_player.first_name} (#{game.current_player.symbol})" #on identifie le joueur dont c'est le tour
-  puts "dans quelle case souhaites-tu jouer?"
+  puts "=>> C'est au tour de #{game.current_player.first_name} (#{game.current_player.symbol})<<=" #on identifie le joueur dont c'est le tour
+  print (" "*12).colorize(:background => :light_white)
+  print "Dans quelle case souhaites-tu jouer?".colorize(:color => :black, :background => :light_white)
+  puts (" "*12).colorize(:background => :light_white)
   print ">"
   input = gets.chomp 
   chosen_case = game.board.case_hash[input.upcase] #case choisie par le joueur dont c'est le tour
@@ -33,13 +32,13 @@ def play_turn(game) #permet de faire un tour de jeu
       chosen_case.content = game.current_player.symbol #si vide, on la remplie avec le symbole du joueur qui joue
     else
 
-      puts "!! ERREUR: la case est déjà prise. Veuillez recommencer !!"
+      puts "!! ERREUR: la case est déjà prise. Veuillez recommencer !!  ".colorize(:background => :red)
       puts
       return nil #indique que le tour a échoué et doit être rejoué
     end
 
   else #cas où la case choisie n'existe pas
-    puts "!! ERREUR: cette case n'existe pas. Veuillez recommencer !!"
+    puts "!! ERREUR: cette case n'existe pas. Veuillez recommencer !! ".colorize(:background => :red)
     puts
     return nil #indique que le tour a échoué et doit être rejoué
 
@@ -76,10 +75,12 @@ end
 def game_end(game) #Permet l'affichage de fin de partie
   if game.status == "draw"
     game.win_count['draw'] += 1
-    puts "Match nul! Personne ne gagne"
+    print (" "*16).colorize(:background => :black)
+    print "Match nul! Personne ne gagne".colorize(:background => :black)
+    puts (" "*16).colorize(:background => :black)
   else
     game.win_count[game.status] += 1
-    puts "C'est #{game.status.first_name} qui a gagné!"
+    puts " =>> C'est #{game.status.first_name} qui a gagné! <<=".colorize(:background => :green)
   end
 end
 
@@ -159,9 +160,10 @@ def perform #orchestrateur du jeu
     game_end(game) #si on sort de la boucle while d'avant, c'est que la partie est finie. On lance cet affichage.
 
     #on propose une nouvelle partie
-    puts
-    puts" Voulez-vous rejouer une partie avec les mêmes joueurs?"
-    print "(Y/N) >"
+    print (" "*11).colorize(:background => :light_white)
+    print "Voulez-vous rejouer une partie ? (Y/N)".colorize(:color => :black, :background => :light_white)
+    puts (" "*11).colorize(:background => :light_white)
+    print ">"
     input = gets.chomp
     if input.downcase == "y"
       new_round(game) #permet de relancer une partie (nouveau board mais mêmes joueurs)
