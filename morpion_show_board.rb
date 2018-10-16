@@ -7,8 +7,8 @@ def show_board(game)
   global_background = :light_white
   score_background = :black
   board_background = :black
-  player1_color = :red
-  player2_color = :green
+  player1_color = :yellow
+  player2_color = :blue
   puts 
   puts (" "*60).colorize(:background => global_background)
   puts (" "*60).colorize(:background => global_background)
